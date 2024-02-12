@@ -51,12 +51,12 @@ app.get("/", async (req, res) => {
 });
 
 // * Server configuration
-const NODE_ENV = process.env.NODE_ENV;
+const PROJECT_STATUS = process.env.PROJECT_STATUS;
 const DB_URI = process.env.DB_URI;
 const DB_URI_LOCAL = process.env.DB_URI_LOCAL;
 
-if (!NODE_ENV) {
-  console.error("Error: NODE_ENV environment variable is not set");
+if (!PROJECT_STATUS) {
+  console.error("Error: PROJECT_STATUS environment variable is not set");
   process.exit(1);
 } else if (!DB_URI) {
   console.error("Error: DB_URI environment variable is not set");
@@ -67,7 +67,7 @@ if (!NODE_ENV) {
 }
 // * Server configuration
 mongoose
-  .connect(NODE_ENV !== "development" ? DB_URI : DB_URI_LOCAL)
+  .connect(PROJECT_STATUS !== "development" ? DB_URI : DB_URI_LOCAL)
   .then(() => app.listen(PORT, () => console.log(`Server run on port ${PORT}`)))
   .catch((error) => console.log(error));
 

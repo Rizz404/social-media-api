@@ -13,7 +13,7 @@ lerna-debug.log*
 
 node_modules
 logs
-dist
+dist/
 dist-ssr
 *.local
 
